@@ -75,17 +75,32 @@
         vertical-align: middle;
         line-height: 20px;
     }
+
+    .red {
+      color: red;
+    }
+
+    .green {
+      color: greenyellow;
+    }
+
+    .help {
+      clear: both;
+    }
+    .help li {
+        list-style: none;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1 id="bookTitle"></h1>
-    <button onclick="window.location.href = 'books.html';">Go Back</button>
+    <button onclick="window.location.href = 'books.html';">⬅️ Go Back</button>
     |
-    <button onclick="exportBookToHtml()">Export to .html</button>
+    <button onclick="exportBookToHtml()">📘 Export to .html</button>
     |
-    <button onclick="exportLocalStorage()">Export backup</button>
-    <button title="Careful, this will replace your current data by the backup data" onclick="openImportModal()">Import backup</button>
+    <button onclick="exportLocalStorage()">📤 Export backup</button>
+    <button title="Careful, this will replace your current data by the backup data" onclick="openImportModal()">📥 Import backup</button>
     <hr />
     
     <form class="mt-4">
@@ -93,8 +108,8 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Entry</th>
-            <th>Preview</th>
+            <th>🖋️ Entry</th>
+            <th>👀 Preview</th>
           </tr>
         </thead>
         <tbody id="entryItem">
@@ -104,13 +119,13 @@
               <span id="entryIndexPlaceholder">1</span>
               <br />
               <hr />
-              <button type="button" class="action-button" onclick="addEntryButton('new')">new entry</button>
-              <button type="button" class="action-button" onclick="addEntryButton('existing')">existing entry</button>
+              <button type="button" class="action-button" onclick="addEntryButton('new')">➕ entry</button>
+              <button type="button" class="action-button" onclick="addEntryButton('existing')">🔗 existing entry</button>
             </td>
             <td>
-              Title:<br />
+              📛 Title:<br />
               <input type="text" class="form-control" id="entryTitle" maxlength="40">
-              Text:<br />
+              🖋️ Text:<br />
               <textarea class="form-control entry-text" id="entryText"></textarea>
             </td>
             <td class="previewPlaceHolder" id="entryTextPlaceholder">
@@ -119,13 +134,8 @@
         </tbody>
       </table>
       
-      <button type="submit" class="btn btn-primary">Save Entry</button>
+      <button type="submit" class="btn btn-primary">💾 Save Entry</button>
     </form>
-    <br />
-    <span class="informational-text">
-      HELP:<br />
-      [ENTRY(N)] - point to another entry where N should be the entry number #
-    </span>
     <br />
     <br />
     <div class="tree">
@@ -135,6 +145,18 @@
     <div class="tree">
       <h3>Complete tree from first entry</h3>
       <ul id="entryTreeComplete"></ul>
+    </div>
+    <br />
+    <br />
+    <div class="help">
+      <span class="informational-text">
+        ❕ HELP:<br />
+        <ul>
+          <li>[ENTRY(N)] - point to another entry where N should be the entry number #</li>
+          <li>🔴 - This entry is not pointing to any other entry (dead entry)</li>
+          <li>🟢 - This entry is pointing to other entries</li>
+       </ul>
+      </span>
     </div>
   </div>
 

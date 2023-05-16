@@ -73,7 +73,7 @@ function loadBookList() {
     const listItem = document.createElement('li');
     listItem.classList.add('book-list-item');
     listItem.innerHTML = `
-      <a class="title" href="write.html?bookIndex=${index}">${book.title}</a><br>
+      <a class="title" href="write.html?bookIndex=${index}">📕 ${book.title}</a><br>
       ${book.description}<br>
       <button class="btn edit-btn" onclick="editBook(${index})">✏️ Edit</button>
       <button class="btn delete-btn" onclick="deleteBook(${index})">🗑️ Delete</button>

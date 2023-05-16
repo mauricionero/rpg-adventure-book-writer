@@ -128,7 +128,7 @@ function loadBookTitle() {
   booksManager.loadBooks();
   const book = booksManager.books[bookIndex];
   const bookTitle = document.getElementById('bookTitle');
-  bookTitle.textContent = book.title;
+  bookTitle.textContent = `📖 ${book.title}`;
 
   // Set the book index in a hidden input field for reference
   const bookIndexInput = document.createElement('input');
