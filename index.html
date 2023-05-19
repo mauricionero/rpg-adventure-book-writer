@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Books</title>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/global.css">
 
   <style>
     body {
@@ -46,9 +46,9 @@
 </head>
 <body>
   <div class="container">
-    <h1>Books</h1>
-    <button onclick="exportLocalStorage()">Export backup</button>
-    <button title="Careful, this will replace your current data by the backup data" onclick="openImportModal()">Import backup</button>
+    <h1>📚 Books</h1>
+    <button onclick="exportLocalStorage()">📤 Export backup</button>
+    <button title="Careful, this will replace your current data by the backup data" onclick="openImportModal()">📥 Import backup</button>
     
     <form class="mt-4" id="formIndex">
       <div class="form-group">
@@ -61,26 +61,26 @@
         <textarea class="form-control" id="description" maxlength="255"></textarea>
       </div>
       
-      <!-- <div class="form-group">
-        <input type="radio" id="public" name="visibility" value="public">
-        <label for="public">🌐 Public</label>
+      <div class="form-group">
+        <input type="radio" id="web" name="complexity" value="1" checked>
+        <label for="web">📱 Web version (more features)</label>
         <br />
-        <input type="radio" id="private" name="visibility" value="private" checked>
-        <label for="private">🔒 Private</label>
-      </div> -->
+        <input type="radio" id="ereader" name="complexity" value="2">
+        <label for="ereader">📗 E-reader compatible (less features)</label>
+      </div>
       
-      <button type="submit" class="btn btn-primary">Save Book</button>
+      <button type="submit" class="btn btn-primary">💾 Save Book</button>
     </form>
     
     <div class="book-list mt-5">
-      <h2>Book List:</h2>
+      <h2>📚 Book List:</h2>
       <ul class="list-unstyled">
       </ul>
     </div>
   </div>
 
-  <script src="global.js"></script>
-  <script src="booksmanager.js"></script>
-  <script src="books.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/booksmanager.js"></script>
+  <script src="js/books.js"></script>
 </body>
 </html>

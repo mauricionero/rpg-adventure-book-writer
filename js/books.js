@@ -1,6 +1,9 @@
+const COMPLEXITY_WEB = 1
+const COMPLEXITY_E_READER = 2
+
 // Book class
 class Book {
-  constructor(title_or_index, description = null, visibility = null, entries = []) {
+  constructor(title_or_index, description = null, visibility = null, complexity = COMPLEXITY_WEB, entries = []) {
     let title = title_or_index;
 
     if (typeof title_or_index == 'number') {
@@ -10,12 +13,21 @@ class Book {
       description = book.description;
       visibility = book.visibility;
       entries = book.entries;
+      complexity = book.complexity;
     }
 
     this.title = title;
     this.description = description;
     this.visibility = visibility;
+    this.complexity = complexity;
     this.entries = entries;
+  }
+
+  static COMPLEXITY_WEB() {
+    return COMPLEXITY_WEB;
+  }
+  static COMPLEXITY_E_READER() {
+    return COMPLEXITY_E_READER;
   }
 }
 
@@ -28,10 +40,12 @@ function handleFormSubmit(event) {
 
   const titleInput = document.getElementById('title');
   const descriptionInput = document.getElementById('description');
+  const complexityInput = document.querySelector('input[name="complexity"]:checked');
 
   const title = titleInput.value.trim();
   const description = descriptionInput.value.trim();
   const visibility = 'private';
+  const complexity = complexityInput.value;
 
   if (!title) {
     alert('Title is mandatory!');
@@ -46,11 +60,11 @@ function handleFormSubmit(event) {
       return;
     }
     newEntries = [{ entryIndex: 1, title: 'Intro', text: '' }];
-    const book = new Book(title, description, visibility, newEntries);
+    const book = new Book(title, description, visibility, complexity, newEntries);
     booksManager.addBook(book);
   } else {
     // Editing an existing book
-    const book = new Book(title, description, visibility);
+    const book = new Book(title, description, visibility, complexity);
     booksManager.editBook(index, book);
     // Clear form index after editing
     document.getElementById('formIndex').value = '';
@@ -73,10 +87,12 @@ function loadBookList() {
     const listItem = document.createElement('li');
     listItem.classList.add('book-list-item');
     listItem.innerHTML = `
-      <a class="title" href="write.html?bookIndex=${index}">${book.title}</a><br>
-      ${book.description}<br>
+      <br />
+      <a class="title" href="write.html?bookIndex=${index}">${book.complexity == COMPLEXITY_E_READER ? '📕 e-reader' : '📱 Web'} ${book.title}</a><br>
+      ${book.description}<br />
       <button class="btn edit-btn" onclick="editBook(${index})">✏️ Edit</button>
       <button class="btn delete-btn" onclick="deleteBook(${index})">🗑️ Delete</button>
+      <br />
     `;
     bookList.appendChild(listItem);
   });
@@ -87,11 +103,13 @@ function editBook(index) {
   const book = booksManager.books[index];
   const titleInput = document.getElementById('title');
   const descriptionInput = document.getElementById('description');
+  const complexityInput = document.querySelector(`input[name="complexity"][value="${book.complexity || COMPLEXITY_WEB}"]`);
   const formIndexInput = document.getElementById('formIndex');
 
   // Populate form with existing book details
   titleInput.value = book.title;
   descriptionInput.value = book.description;
+  complexityInput.checked = true;
 
   // Store the index in the formIndex input for reference
   formIndexInput.value = index;
