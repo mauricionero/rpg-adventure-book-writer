@@ -91,7 +91,7 @@ function loadBookList() {
     listItem.classList.add('book-list-item');
     listItem.innerHTML = `
       <br />
-      <a class="title" href="write.html?bookIndex=${bookIndex}">${book.complexity == COMPLEXITY_E_READER ? '📕 e-reader' : '📱 Web'} ${book.title}</a><br>
+      <a class="title" href="write.html?bookIndex=${bookIndex}">${book.complexity == COMPLEXITY_E_READER ? '📕' : '📱'} ${book.title}</a><br>
       ${book.description}<br />
       <a class="btn play-btn button" href="play.html?bookIndex=${bookIndex}">🎮 play</a>
       <button class="btn edit-btn" onclick="editBook(${bookIndex})">✏️ edit</button>
