@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Play Book</title>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+  <div class="container">
+    <h1 id="bookTitle"></h1>
+    <button onclick="window.location.href = 'index.html';">⬅️ Go Back</button>
+    <hr />
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="title">
+            <span id="entryIndexPlaceholder">1</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="entryItem">
+        <tr>
+          <td class="previewPlaceHolder" id="entryTextPlaceholder">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="js/booksmanager.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/entry.js"></script>
+  <script src="js/play.js"></script>
+</body>
+</html>

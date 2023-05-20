@@ -161,3 +161,6 @@ class BooksManager {
     return book ? book.entries.length + 1 : 1;
   }
 }
+
+// Instantiate the BooksManager
+const booksManager = new BooksManager();

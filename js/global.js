@@ -109,3 +109,26 @@ function exportBookToHtml(bookIndex = null) {
   // Clean up the URL object
   URL.revokeObjectURL(htmlURL);
 }
+
+// Helper function to get the book index from the URL
+function getBookIndexFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('bookIndex');
+}
+
+// Function to load the book title
+function loadBookTitle() {
+  const bookIndex = getBookIndexFromURL();
+  // Load books from local storage
+  booksManager.loadBooks();
+  const book = booksManager.books[bookIndex];
+  const bookTitle = document.getElementById('bookTitle');
+  bookTitle.textContent = `📖 ${book.title}`;
+
+  // Set the book index in a hidden input field for reference
+  const bookIndexInput = document.createElement('input');
+  bookIndexInput.type = 'hidden';
+  bookIndexInput.id = 'bookIndex';
+  bookIndexInput.value = bookIndex;
+  document.body.appendChild(bookIndexInput);
+}
