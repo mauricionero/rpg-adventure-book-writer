@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container ">
     <h1 id="bookTitle"></h1>
     <button onclick="window.location.href = 'index.html';">⬅️ Go Back</button>
     |
@@ -24,12 +24,11 @@
           <tr>
             <th>#</th>
             <th>🖋️ Entry</th>
-            <th>👀 Preview</th>
           </tr>
         </thead>
         <tbody id="entryItem">
           <tr>
-            <td>
+            <td style="width: 30%">
               <span id="entryIndexPlaceholder">1</span>
               <br />
               <hr />
@@ -42,7 +41,12 @@
               🖋️ Text:<br />
               <textarea class="form-control entry-text" id="entryText"></textarea>
             </td>
-            <td class="previewPlaceHolder" id="entryTextPlaceholder">
+          </tr>
+          <tr>
+            <th colspan="2">👀 Preview</th>
+          </tr>
+          <tr>
+            <td colspan="2" class="previewPlaceHolder" id="entryTextPlaceholder">
             </td>
           </tr>
         </tbody>
