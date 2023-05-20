@@ -6,6 +6,7 @@ class Book {
   constructor(title_or_index, description = null, visibility = null, complexity = COMPLEXITY_WEB, entries = []) {
     let title = title_or_index;
     let readings = [];
+    let items = [];
 
     if (typeof title_or_index == 'number') {
       const book = BooksManager.getBookByIndexFromLocalStorage(title_or_index);
@@ -16,6 +17,7 @@ class Book {
       entries = book.entries;
       complexity = book.complexity;
       readings = book.readings || [];
+      items = book.items || [];
     }
 
     this.title = title;
@@ -24,6 +26,7 @@ class Book {
     this.complexity = complexity;
     this.entries = entries;
     this.readings = readings;
+    this.items = items;
   }
 
   static COMPLEXITY_WEB() {
