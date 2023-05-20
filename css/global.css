@@ -27,7 +27,7 @@ body {
 }
 
 .entry-text{
-  height: 110px !important;
+  min-height: 150px;
 }
 
 .informational-text {
