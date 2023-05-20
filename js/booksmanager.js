@@ -11,8 +11,6 @@ class BooksManager {
   
   editBook(bookIndex, updatedBook) {
     const book = this.getBookByIndex(bookIndex);
-    console.log('book', book);
-    console.log('updatedBook', updatedBook);
     if (book) {
       // Preserve the existing entries in the book
       updatedBook.entries = book.entries;
@@ -77,10 +75,10 @@ class BooksManager {
   
     const book = books[bookIndex];
     if (book) {
-      // Check if the entry already exists
       if (book.entries == undefined) {
         book.entries = [];
       }
+      // Check if the entry already exists
       const existingEntry = book.entries.find(e => e.entryIndex === entry.entryIndex);
       if (existingEntry) {
         // Update the existing entry
@@ -89,9 +87,7 @@ class BooksManager {
       } else {
         // Generate a new entry index
         const lastEntryIndex = this.getLastEntryIndex();
-        console.log('lastEntryIndex', lastEntryIndex);
         const newEntryIndex = lastEntryIndex + 1;
-        console.log('newEntryIndex', newEntryIndex);
   
         // Create a new entry
         const newEntry = {
@@ -107,6 +103,8 @@ class BooksManager {
   
     // Update the books data in localStorage
     localStorage.setItem('books', JSON.stringify(books));
+
+    this.loadBooks();
   }
 
   getLastEntryIndex(bookIndex = null) {
