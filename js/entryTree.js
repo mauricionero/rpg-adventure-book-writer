@@ -16,7 +16,6 @@ class EntryTree {
     const entries = new Entry();
     entries.loadEntries(bookIndex);
     const entry = entries.getEntryByIndex(entryIndex);
-    console.log('entry', entry);
     if (!entry) {
       return ''; // Entry not found
     }
@@ -54,7 +53,6 @@ class EntryTree {
     this.entryIndices = [];
     entryTreeElement = document.getElementById('entryTreeComplete');
     entryIndex = getFirstEntryIndex();
-    console.log('entryIndex', entryIndex);
     entryTreeElement.innerHTML = this.renderEntryTree(entryIndex);
   }
 

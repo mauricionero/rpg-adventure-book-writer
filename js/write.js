@@ -1,6 +1,5 @@
 // Function to handle form submission
 function handleFormSubmit(event = null) {
-  console.log('event', event);
   if (event) {
     event.preventDefault();
   }
@@ -115,14 +114,12 @@ function deleteEntry(bookIndex, entryIndex) {
 function addEntryButton(action = 'new') {
   // save before inserting the new entry to make sure this entry exists first
   if (! handleFormSubmit()) {
-    console.log('handleFormSubmit error');
     return false;
   }
 
   const bookIndex = getBookIndexFromURL(); // Retrieve the book index from the URL
   const book = booksManager.getBookByIndex(bookIndex);
-  console.log('book', book);
-  let entryIndex = book.entries.length + 1; // Get the new entry index
+  let entryIndex = booksManager.getLastEntryIndex() + 1; // Get the new entry index
 
   let title = `Entry ${entryIndex}`;
   const text = '';
