@@ -41,7 +41,17 @@ class Entry {
 
   renderCurrentEntryTextPlaceholder() {
     const entryTextElement = document.getElementById('entryText');
-    let entryText = entryTextElement.value;
+    let entryText;
+    if (entryTextElement != null) {
+      // get from the book directly
+      entryText = entryTextElement.value;
+    } else {
+      // visualizing
+      const entryIndex = getEntryIndexFromURL();
+      const entry = this.getEntryByIndex(entryIndex);
+      document.getElementById('entryIndexPlaceholder').innerHTML = `#${entry.entryIndex}`;
+      entryText = entry.text;
+    }
 
     const updatedEntryText = Entry.formatAndReplaceMagicWordsText(entryText);
 
@@ -60,7 +70,7 @@ class Entry {
       if (inpageLinks) {
         link = `#entry_${entryIndex}`;
       } else {
-        link = `write.html?bookIndex=${bookIndex}&entryIndex=${entryIndex}`;
+        link = `?bookIndex=${bookIndex}&entryIndex=${entryIndex}`;
       }
 
       return `<a class="entryLink" href="${link}">${entryIndex}</a>`;
@@ -68,12 +78,6 @@ class Entry {
 
     return updatedEntryText;
   }
-}
-
-// Helper function to get the book index from the URL
-function getBookIndexFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get('bookIndex');
 }
 
 // Helper function to get the entry index from the URL or return the first entry index if not present
