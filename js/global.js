@@ -12,7 +12,7 @@ function openImportModal() {
   const modalHTML = `
     <div id="importModal" class="modal">
       <div class="modal-content">
-        <h2>Import Backup File</h2>
+        <h2>Import Backup File <span class="closeButton" id="closeButton">X</span></h2>
         <p>Warning: Importing a backup file will replace the current data in localStorage.</p>
         <p>Please select a JSON backup file to import:</p>
         <input type="file" id="backupFileInput" accept=".json">
@@ -32,6 +32,12 @@ function openImportModal() {
   // Add event listener to handle file selection
   const fileInput = document.getElementById('backupFileInput');
   fileInput.addEventListener('change', handleFileSelect, false);
+
+  // Add event listener to close the modal when the close button is clicked
+  const closeButton = document.getElementById('closeButton');
+  closeButton.addEventListener('click', () => {
+    document.body.removeChild(modalContainer); // Remove the modal element from the DOM
+  });
 
   function handleFileSelect(event) {
     const file = event.target.files[0];
