@@ -124,13 +124,23 @@ function addEntryButton(action = 'new') {
   let title = `Entry ${entryIndex}`;
   const text = '';
   if (action == 'new') {
-    title = prompt('Type a new title (optional)') || title;
+    let newTitle = prompt('Type a new title (optional)');
+
+    if (newTitle == null) {
+      return ;
+    }
+
+    newTitle ||= title;
 
     const entry = { entryIndex, title, text };
 
     booksManager.addEntry(bookIndex, entry);
   } else if (action == 'existing') {
     entryIndex = prompt('Type the index number');
+
+    if (entryIndex == null) {
+      return ;
+    }
   } else {
     console.error('This action doent exist yet:' + action);
   }
